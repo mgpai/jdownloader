@@ -1,0 +1,8 @@
+{
+    "eventTrigger": "TOOLBAR_BUTTON",
+    "eventTriggerSettings": {},
+    "id": 1666153451296,
+    "name": "sort-download-packages-by-bytes-remaining",
+    "script": "/*\n    sort download packages by bytes remaining\n    Trigger : Toolbar button pressed\n*/\n\nif (name == \"Sort packages\") {\n    var desc = getProperty(\"desc\", false);\n\n    getAllFilePackages().filter(function(package) {\n        return !package.finished;\n    }).sort(function(a, b) {\n        var a = getBytesRemaining(a);\n        var b = getBytesRemaining(b);\n\n        return desc ? b - a : a - b;\n    }).reverse().forEach(function(package) {\n        callAPI(\"downloadsV2\", \"movePackages\", [package.UUID], -1);\n    })\n\n    if (desc) {\n        setProperty(\"desc\", false, false);\n    } else {\n        setProperty(\"desc\", true, false);\n    }\n}\n\nfunction getBytesRemaining(package) {\n    return package.bytesTotal - package.bytesLoaded;\n}",
+    "enabled": true
+}

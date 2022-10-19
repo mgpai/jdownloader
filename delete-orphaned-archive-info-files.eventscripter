@@ -1,0 +1,8 @@
+{
+    "eventTrigger": "NONE",
+    "eventTriggerSettings": {},
+    "id": 1666162509890,
+    "name": "delete-orphaned-archive-info-files",
+    "script": "/*\n    delete orphaned archive info files from cfg/archive folder\n    trigger : Any/None (Click \"Test Run\" button in the main menu of the editor window to run the script)\n    Note: Very resource intensive. Use very sparingly, espcecially if the download list is large\n*/\n\nvar names = [];\n\ngetAllFilePackages().forEach(function(package) {\n    package.archives.forEach(function(archive) {\n        names.push(\"v2_\" + archive.settingsID + \".json\");\n    })\n})\n\ngetPath(JD_HOME + \"/cfg/archives\").children.forEach(function(file) {\n    names.indexOf(file.name) == -1 && file.delete();\n})",
+    "enabled": true
+}

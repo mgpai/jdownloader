@@ -1,0 +1,8 @@
+{
+    "eventTrigger": "NONE",
+    "eventTriggerSettings": {},
+    "id": 1665650301234,
+    "name": "export-files",
+    "script": "/*\n    export files\n*/\n\nvar repo = \"/jd/\"\n\nvar items = callAPI(\"config\", \"get\",\n    \"org.jdownloader.extensions.eventscripter.EventScripterConfig\",\n    \"cfg/org.jdownloader.extensions.eventscripter.EventScripterExtension\",\n    \"Scripts\"\n)\n\nitems.forEach(function(item) {\n    if (item.enabled) {\n        var name = item.name\n        var script = items.script;\n        var json = getPath(repo + name + \".eventscripter\");\n        var js = getPath(repo + name + \".js\");\n        \n        json.delete();\n        js.delete();\n        \n        writeFile(json, JSON.stringify(item, null, 4), false);\n        writeFile(js, item.script, false);\n    }\n})\n\nitems = callAPI(\"config\", \"get\",\n    \"org.jdownloader.controlling.packagizer.PackagizerSettings\", null, \"RuleList\"\n)\n\nitems.forEach(function(item) {\n    if (item.enabled) {\n        var packagizer = getPath(repo + item.name + \".packagizer\");\n        \n        packagizer.delete();\n\n        writeFile(packagizer, JSON.stringify(item, null, 4), false);\n    }\n})",
+    "enabled": true
+}

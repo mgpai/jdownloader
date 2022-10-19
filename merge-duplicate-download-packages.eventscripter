@@ -1,0 +1,8 @@
+{
+    "eventTrigger": "ON_DOWNLOADS_RUNNING",
+    "eventTriggerSettings": {},
+    "id": 1665735836859,
+    "name": "merge-duplicate-download-packages",
+    "script": "/*\n    Merge duplicate download packages\n    Trigger : Download controller started\n*/    \n\nvar items = {};\n\ngetAllFilePackages().forEach(function(package) {\n    var key = package.name + package.downloadFolder;\n\n    try {\n        var afterLinkID = items[key].afterLinkID;\n        var destPackageID = items[key].destPackageID\n        var linkIds = package.downloadLinks.map(function(link) {\n            return link.UUID;\n        })\n\n        callAPI(\"downloadsV2\", \"moveLinks\", linkIds, afterLinkID, destPackageID);\n        items[key].afterLinkID = linkIds.pop();\n    } catch (e) {\n        items[key] = {\n            destPackageID: package.UUID,\n            afterLinkID: package.downloadLinks.pop().UUID\n        }\n    }\n})",
+    "enabled": true
+}

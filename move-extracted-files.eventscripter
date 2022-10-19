@@ -1,0 +1,10 @@
+{
+    "eventTrigger": "ON_ARCHIVE_EXTRACTED",
+    "eventTriggerSettings": {
+        "isSynchronous": false
+    },
+    "id": 1666149833531,
+    "name": "move-extracted-files",
+    "script": "/*\n    Move extracted files\n    Trigger: Archive extraction finished\n*/\n\narchive.extractedFilePaths.forEach(function(filePath) {\n    filePath.moveTo(\"c:\\\\my folder\");\n})",
+    "enabled": true
+}

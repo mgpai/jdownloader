@@ -1,0 +1,75 @@
+{
+    "filetypeFilter": {
+        "customs": null,
+        "matchType": "IS",
+        "archivesEnabled": false,
+        "audioFilesEnabled": false,
+        "docFilesEnabled": false,
+        "exeFilesEnabled": false,
+        "hashEnabled": false,
+        "imagesEnabled": false,
+        "subFilesEnabled": false,
+        "useRegex": false,
+        "videoFilesEnabled": false,
+        "enabled": false
+    },
+    "originFilter": {
+        "matchType": "IS",
+        "origins": [],
+        "enabled": false
+    },
+    "hosterURLFilter": {
+        "matchType": "CONTAINS",
+        "regex": "",
+        "useRegex": false,
+        "enabled": false
+    },
+    "onlineStatusFilter": {
+        "matchType": "IS",
+        "onlineStatus": "OFFLINE",
+        "enabled": false
+    },
+    "chunks": -1,
+    "created": 1666151787203,
+    "sourceURLFilter": {
+        "matchType": "CONTAINS",
+        "regex": "",
+        "useRegex": false,
+        "enabled": false
+    },
+    "conditionFilter": {
+        "conditions": [],
+        "matchType": "IS_TRUE",
+        "enabled": false
+    },
+    "testUrl": "",
+    "enabled": true,
+    "packagenameFilter": {
+        "matchType": "CONTAINS",
+        "regex": "",
+        "useRegex": false,
+        "enabled": false
+    },
+    "filenameFilter": {
+        "matchType": "CONTAINS",
+        "regex": "",
+        "useRegex": false,
+        "enabled": false
+    },
+    "name": "move-extracted-files",
+    "matchAlwaysFilter": {
+        "enabled": true
+    },
+    "pluginStatusFilter": {
+        "matchType": "IS",
+        "pluginStatus": "PREMIUM",
+        "enabled": false
+    },
+    "moveto": "c:\\my folder",
+    "filesizeFilter": {
+        "from": 0,
+        "matchType": "BETWEEN",
+        "to": 0,
+        "enabled": false
+    }
+}
