@@ -14,12 +14,15 @@ items.forEach(function(item) {
     if (item.enabled) {
         var name = item.name
         var script = items.script;
-        var json = getPath(repo + name + ".eventscripter");
-        var js = getPath(repo + name + ".js");
-        
+        var json = getPath(repo + "eventscripter/json/" + name + ".eventscripter");
+        var js = getPath(repo + "eventscripter/javascript/" + name + ".js");
+
+        json.mkdirs();
+        js.mkdirs();
+
         json.delete();
         js.delete();
-        
+
         writeFile(json, JSON.stringify(item, null, 4), false);
         writeFile(js, item.script, false);
     }
@@ -31,8 +34,9 @@ items = callAPI("config", "get",
 
 items.forEach(function(item) {
     if (item.enabled) {
-        var packagizer = getPath(repo + item.name + ".packagizer");
-        
+        var packagizer = getPath(repo + "packagizer/" + item.name + ".packagizer");
+
+        packagizer.mkdirs();
         packagizer.delete();
 
         writeFile(packagizer, JSON.stringify(item, null, 4), false);

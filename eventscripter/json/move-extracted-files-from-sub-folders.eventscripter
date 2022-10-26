@@ -1,0 +1,10 @@
+{
+    "eventTrigger": "ON_ARCHIVE_EXTRACTED",
+    "eventTriggerSettings": {
+        "isSynchronous": false
+    },
+    "id": 1666754949421,
+    "name": "move-extracted-files-from-sub-folders",
+    "script": "/*\n    move extracted files from sub-folders\n    trigger: archive extraction finished\n*/    \n\nvar baseFolder = archive.extractToFolder || archive.folder;\n\narchive.extractedFilePaths.forEach(function(filePath) {\n    filePath.parent != baseFolder && filePath.moveTo(\"c:/my folder\");\n})",
+    "enabled": true
+}
