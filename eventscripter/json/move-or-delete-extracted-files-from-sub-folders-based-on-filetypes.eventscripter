@@ -1,0 +1,10 @@
+{
+    "eventTrigger": "ON_ARCHIVE_EXTRACTED",
+    "eventTriggerSettings": {
+        "isSynchronous": false
+    },
+    "id": 1666844183984,
+    "name": "move-or-delete-extracted-files-from-sub-folders-based-on-filetypes",
+    "script": "/*\n    move or deleted extracted files from sub-folders based on filetypes\n    trigger: archive extraction finished\n*/\n\nvar baseFolder = archive.extractToFolder || archive.folder;\n\nvar exts = {\n    delete: [\"inf\"],\n    move: [\"jpg\", \"jpeg\"]\n}\n\narchive.extractedFilePaths.forEach(function(filePath) {\n    var ext = filePath.extension;\n\n    if (exts.delete.indexOf(ext) > -1) {\n        filePath.delete();\n    } else if (exts.move.indexOf(ext) > -1) {\n        filePath.parent != baseFolder && filePath.moveTo(\"c:/my folder\");\n    }\n})",
+    "enabled": true
+}
