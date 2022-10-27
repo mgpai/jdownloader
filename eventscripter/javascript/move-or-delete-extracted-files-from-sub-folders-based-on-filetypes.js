@@ -1,5 +1,5 @@
 /*
-    move or deleted extracted files from sub-folders based on filetypes
+    move or delete extracted files from sub-folders based on filetypes
     trigger: archive extraction finished
 */
 
